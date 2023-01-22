@@ -134,7 +134,7 @@ def CheckTurn(x: number, y: number, light2: number, another_light: number):
             break
         elif led.point_brightness(check_x, check_y) == another_light:
             while check_x >= 0 and check_y <= 4:
-                if not (led.point(check_x, check_y)) :
+                if not (led.point(check_x, check_y)):
                     break
                 elif led.point_brightness(check_x, check_y) == light2:
                     return 1
@@ -174,15 +174,21 @@ def Turn(x2: number, y2: number, light22: number, another_light2: number):
     # 左方向
     check_x = x2 - 1
     while check_x >= 0:
-        if led.point_brightness(check_x, y2) == another_light2:
+        if not (led.point(check_x, y2)) or led.point_brightness(check_x, y2) == light22:
+            break
+        elif led.point_brightness(check_x, y2) == another_light2:
             while check_x >= 0:
                 if led.point_brightness(check_x, y2) == light22:
                     i = 0
                     while i <= x2 - check_x - 1:
                         led.plot_brightness(x2 - i - 1, y2, light22)
                         i += 1
-                check_x += -1
-        check_x += -1
+                elif led.point_brightness(check_x, y2) == another_light2:
+                    check_x += -1
+                else:
+                    break
+        else:
+            check_x += -1
     # 右方向
     check_x = x2 + 1
     while check_x <= 4:
@@ -266,8 +272,6 @@ def on_button_pressed_ab():
                 basic.pause(500)
                 Turn(カウンターx, カウンターy, light222, another_light22)
                 j += 1
-            else:
-                pass
     カウンターx = -1
     カウンターy = -1
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
