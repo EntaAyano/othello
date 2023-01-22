@@ -7,7 +7,35 @@ input.onButtonPressed(Button.A, function () {
     カウンターx += 1
 })
 function CheckTurn (x: number, y: number, light2: number, another_light: number) {
-    return 1
+    // 上方向
+    check_y = y - 1
+    while (check_y >= 0) {
+        if (led.pointBrightness(x, check_y) == another_light) {
+            while (check_y >= 0) {
+                if (led.pointBrightness(x, check_y) == light2) {
+                    return 1
+                }
+                check_y += -1
+            }
+        }
+        check_y += -1
+    }
+    // 下方向
+    check_y = y + 1
+    while (check_y <= 4) {
+        if (led.pointBrightness(x, check_y) == another_light) {
+            while (check_y <= 4) {
+                if (led.pointBrightness(x, check_y) == light2) {
+                    return 1
+                }
+                check_y += 1
+            }
+        }
+        check_y += 1
+    }
+    // 左方向
+    check_y = x - 1
+    return 0
 }
 input.onButtonPressed(Button.AB, function () {
     if (カウンター % 2 == 1) {
@@ -33,6 +61,7 @@ input.onButtonPressed(Button.B, function () {
 })
 let another_light2 = 0
 let light22 = 0
+let check_y = 0
 let カウンターy = 0
 let カウンターx = 0
 let カウンター = 0
