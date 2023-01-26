@@ -192,8 +192,9 @@ function Turn (x3: number, y3: number, light3: number, another_light3: number) {
             check_y += -1
         } else if (CheckLight(x3, check_y, light3, another_light3) == 1) {
             if (Turn_Frag == 1) {
-                for (let カウンター = 0; カウンター <= check_y; カウンター++) {
-                    led.plotBrightness(0, 0, 255)
+                i = y3 - check_y - 1
+                while (false) {
+                	
                 }
             } else {
                 break;
@@ -228,6 +229,7 @@ input.onButtonPressed(Button.B, function () {
 })
 let another_light22 = 0
 let light222 = 0
+let i = 0
 let Turn_Frag = 0
 let check_x = 0
 let check_y = 0
