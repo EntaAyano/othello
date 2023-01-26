@@ -1,5 +1,5 @@
 {
-    "name": "Othello",
+    "name": "Othello_recursion",
     "description": "",
     "dependencies": {
         "core": "*",
