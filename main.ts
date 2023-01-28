@@ -181,14 +181,18 @@ function Turn (x2: number, y2: number, light22: number, another_light2: number) 
         if (led.pointBrightness(x2, check_y) == another_light2) {
             while (check_y >= 0) {
                 if (led.pointBrightness(x2, check_y) == light22) {
-                    i = 0
+                    i = 1
                     while (i <= y2 - check_y - 1) {
-                        led.plotBrightness(x2, y2 - i - 1, light22)
+                        led.plotBrightness(x2, y2 - i, light22)
                         i += 1
                     }
+                    break;
+break;
                 }
                 check_y += -1
             }
+        } else {
+            break;
         }
         check_y += -1
     }
@@ -198,14 +202,18 @@ function Turn (x2: number, y2: number, light22: number, another_light2: number) 
         if (led.pointBrightness(x2, check_y) == another_light2) {
             while (check_y <= 4) {
                 if (led.pointBrightness(x2, check_y) == light22) {
-                    i = 0
+                    i = 1
                     while (i <= check_y - y2 - 1) {
-                        led.plotBrightness(x2, y2 - i + 1, light22)
+                        led.plotBrightness(x2, y2 + i, light22)
                         i += 1
                     }
+                    break;
+break;
                 }
                 check_y += 1
             }
+        } else {
+            break;
         }
         check_y += 1
     }
@@ -217,16 +225,15 @@ function Turn (x2: number, y2: number, light22: number, another_light2: number) 
         } else if (led.pointBrightness(check_x, y2) == another_light2) {
             while (check_x >= 0) {
                 if (led.pointBrightness(check_x, y2) == light22) {
-                    i = 0
+                    i = 1
                     while (i <= x2 - check_x - 1) {
-                        led.plotBrightness(x2 - i - 1, y2, light22)
+                        led.plotBrightness(x2 - i, y2, light22)
                         i += 1
                     }
-                } else if (led.pointBrightness(check_x, y2) == another_light2) {
-                    check_x += -1
-                } else {
                     break;
+break;
                 }
+                check_x += -1
             }
         } else {
             check_x += -1
@@ -238,14 +245,18 @@ function Turn (x2: number, y2: number, light22: number, another_light2: number) 
         if (led.pointBrightness(check_x, y2) == another_light2) {
             while (check_x <= 4) {
                 if (led.pointBrightness(check_x, y2) == light22) {
-                    i = 0
+                    i = 1
                     while (i <= check_x - x2 - 1) {
-                        led.plotBrightness(x2 - i + 1, y2, light22)
+                        led.plotBrightness(x2 + i, y2, light22)
                         i += 1
                     }
+                    break;
+break;
                 }
                 check_x += 1
             }
+        } else {
+            break;
         }
         check_x += 1
     }
@@ -256,15 +267,19 @@ function Turn (x2: number, y2: number, light22: number, another_light2: number) 
         if (led.pointBrightness(check_x, check_y) == another_light2) {
             while (check_x <= 4 && check_y <= 4) {
                 if (led.pointBrightness(check_x, check_y) == light22) {
-                    i = 0
+                    i = 1
                     while (i <= check_x - x2 - 1 && i <= check_y - y2 - 1) {
-                        led.plotBrightness(x2 - i + 1, y2 - i + 1, light22)
+                        led.plotBrightness(x2 + i, y2 + i, light22)
                         i += 1
                     }
+                    break;
+break;
                 }
                 check_x += 1
                 check_y += 1
             }
+        } else {
+            break;
         }
         check_x += 1
         check_y += 1
@@ -276,47 +291,67 @@ function Turn (x2: number, y2: number, light22: number, another_light2: number) 
         if (led.pointBrightness(check_x, check_y) == another_light2) {
             while (check_x <= 4 && check_y >= 0) {
                 if (led.pointBrightness(check_x, check_y) == light22) {
-                    i = 0
+                    i = 1
                     while (i <= check_x - x2 - 1 && i <= y2 - check_y - 1) {
-                        led.plotBrightness(x2 - i + 1, y2 - i - 1, light22)
+                        led.plotBrightness(x2 + i, y2 - i, light22)
                         i += 1
                     }
+                    break;
+break;
                 }
                 check_x += 1
                 check_y += -1
             }
+        } else {
+            break;
         }
         check_x += 1
         check_y += -1
     }
     // ななめ左下方向
     check_x = x2 - 1
-    check_y = y2 - 1
-    while (check_x >= 0 && check_y >= 0) {
-        if (led.pointBrightness(check_x, check_y) == another_light2) {
-            while (check_x >= 0 && check_y >= 0) {
-                if (led.pointBrightness(check_x, check_y) == light22) {
-                    return 1
-                }
-                check_x += -1
-                check_y += -1
-            }
-        }
-        check_x += 0 - 1
-        check_y += 0 - 1
-    }
-    // ななめ左下方向
-    check_x = x2 - 1
     check_y = y2 + 1
-    while (check_x >= 0 && check_y <= 4) {
+    while (check_x >= 0 && check_y >= 0) {
         if (led.pointBrightness(check_x, check_y) == another_light2) {
             while (check_x >= 0 && check_y <= 4) {
                 if (led.pointBrightness(check_x, check_y) == light22) {
-                    return 1
+                    i = 1
+                    while (i <= x2 - check_x - 1 && i <= y2 - check_y - 1) {
+                        led.plotBrightness(x2 - i, y2 + i, light22)
+                        i += 1
+                    }
+                    break;
+break;
                 }
                 check_x += -1
                 check_y += 1
             }
+        } else {
+            break;
+        }
+        check_x += -1
+        check_y += -1
+    }
+    // ななめ左上方向
+    check_x = x2 - 1
+    check_y = y2 - 1
+    while (check_x >= 0 && check_y <= 4) {
+        if (led.pointBrightness(check_x, check_y) == another_light2) {
+            while (check_x >= 0 && check_y >= 0) {
+                if (led.pointBrightness(check_x, check_y) == light22) {
+                    i = 1
+                    while (i <= x2 - check_x - 1 && i <= y2 - check_y - 1) {
+                        led.plotBrightness(x2 - i, y2 - i, light22)
+                        i += 1
+                    }
+                    break;
+break;
+                }
+                check_x += -1
+                check_y += -1
+            }
+        } else {
+            break;
         }
         check_x += -1
         check_y += 1
@@ -335,9 +370,25 @@ input.onButtonPressed(Button.AB, function () {
         if (!(led.point(カウンターx, カウンターy))) {
             if (CheckTurn(カウンターx, カウンターy, light222, another_light22) == 1) {
                 led.plotBrightness(カウンターx, カウンターy, light222)
+                put += 1
                 basic.pause(500)
                 Turn(カウンターx, カウンターy, light222, another_light22)
                 j += 1
+                if (put == 21) {
+                    player1 = 0
+                    for (let index = 0; index <= 4; index++) {
+                        for (let index2 = 0; index2 <= 4; index2++) {
+                            if (led.pointBrightness(index, index2) == 255) {
+                                player1 += 1
+                            }
+                        }
+                    }
+                    if (player1 >= 13) {
+                        basic.showString("Player1 win!")
+                    } else {
+                        basic.showString("Player2 win!")
+                    }
+                }
             }
         }
     }
@@ -347,10 +398,12 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.B, function () {
     カウンターy += 1
 })
+let player1 = 0
 let another_light22 = 0
 let light222 = 0
 let check_x = 0
 let check_y = 0
+let put = 0
 let カウンターy = 0
 let カウンターx = 0
 let j = 0
@@ -361,3 +414,4 @@ led.plotBrightness(1, 2, 255)
 j = 1
 カウンターx = -1
 カウンターy = -1
+put = 0
