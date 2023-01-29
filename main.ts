@@ -1,181 +1,182 @@
-input.onPinPressed(TouchPin.P0, function () {
+input.onPinPressed(TouchPin.P0, function on_pin_pressed_p0() {
+    
     j += 1
     カウンターx = -1
     カウンターy = -1
 })
-input.onButtonPressed(Button.A, function () {
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    
     カウンターx += 1
 })
-function CheckTurn (x: number, y: number, light2: number, another_light: number) {
-    // 上方向
+function CheckTurn(x: number, y: number, light2: number, another_light: number): number {
+    
+    //  上方向
     check_y = y - 1
     while (check_y >= 0) {
-        if (!(led.point(x, check_y))) {
-            break;
-        } else if (led.pointBrightness(x, check_y) == another_light) {
+        if (led.pointBrightness(x, check_y) == another_light) {
             while (check_y >= 0) {
-                if (!(led.point(x, check_y))) {
-                    break;
+                if (!led.point(x, check_y)) {
+                    break
                 } else if (led.pointBrightness(x, check_y) == light2) {
                     return 1
                 } else {
                     check_y += -1
                 }
+                
             }
         } else {
-            check_y += -1
+            break
         }
+        
     }
-    // 下方向
+    //  下方向
     check_y = y + 1
     while (check_y <= 4) {
-        if (!(led.point(x, check_y))) {
-            break;
-        } else if (led.pointBrightness(x, check_y) == another_light) {
+        if (led.pointBrightness(x, check_y) == another_light) {
             while (check_y <= 4) {
-                if (!(led.point(x, check_y))) {
-                    break;
+                if (!led.point(x, check_y)) {
+                    break
                 } else if (led.pointBrightness(x, check_y) == light2) {
                     return 1
                 } else {
                     check_y += 1
                 }
+                
             }
         } else {
-            check_y += 1
+            break
         }
+        
     }
-    // 左方向
+    //  左方向
     check_x = x - 1
     while (check_x >= 0) {
-        if (!(led.point(check_x, y))) {
-            break;
-        } else if (led.pointBrightness(check_x, y) == another_light) {
+        if (led.pointBrightness(check_x, y) == another_light) {
             while (check_x >= 0) {
-                if (!(led.point(check_x, y))) {
-                    break;
+                if (!led.point(check_x, y)) {
+                    break
                 } else if (led.pointBrightness(check_x, y) == light2) {
                     return 1
                 } else {
                     check_x += -1
                 }
+                
             }
         } else {
-            check_x += -1
+            break
         }
+        
     }
-    // 右方向
+    //  右方向
     check_x = x + 1
     while (check_x <= 4) {
-        if (!(led.point(check_x, y))) {
-            break;
-        } else if (led.pointBrightness(check_x, y) == another_light) {
+        if (led.pointBrightness(check_x, y) == another_light) {
             while (check_x <= 4) {
-                if (!(led.point(check_x, y))) {
-                    break;
+                if (!led.point(check_x, y)) {
+                    break
                 } else if (led.pointBrightness(check_x, y) == light2) {
                     return 1
                 } else {
                     check_x += 1
                 }
+                
             }
         } else {
-            check_x += 1
+            break
         }
+        
     }
-    // ななめ右下方向
+    //  ななめ右下方向
     check_x = x + 1
     check_y = y + 1
     while (check_x <= 4 && check_y <= 4) {
-        if (!(led.point(check_x, check_y))) {
-            break;
-        } else if (led.pointBrightness(check_x, check_y) == another_light) {
+        if (led.pointBrightness(check_x, check_y) == another_light) {
             while (check_x <= 4 && check_y <= 4) {
-                if (!(led.point(check_x, check_y))) {
-                    break;
+                if (!led.point(check_x, check_y)) {
+                    break
                 } else if (led.pointBrightness(check_x, check_y) == light2) {
                     return 1
                 } else {
                     check_x += 1
                     check_y += 1
                 }
+                
             }
         } else {
-            check_x += 1
-            check_y += 1
+            break
         }
+        
     }
-    // ななめ右上方向
+    //  ななめ右上方向
     check_x = x + 1
     check_y = y - 1
     while (check_x <= 4 && check_y >= 0) {
-        if (!(led.point(check_x, check_y))) {
-            break;
-        } else if (led.pointBrightness(check_x, check_y) == another_light) {
+        if (led.pointBrightness(check_x, check_y) == another_light) {
             while (check_x <= 4 && check_y >= 0) {
-                if (!(led.point(check_x, check_y))) {
-                    break;
+                if (!led.point(check_x, check_y)) {
+                    break
                 } else if (led.pointBrightness(check_x, check_y) == light2) {
                     return 1
                 } else {
                     check_x += 1
                     check_y += 0 - 1
                 }
+                
             }
         } else {
-            check_x += 1
-            check_y += 0 - 1
+            break
         }
+        
     }
-    // ななめ左上方向
+    //  ななめ左上方向
     check_x = x - 1
     check_y = y - 1
     while (check_x >= 0 && check_y >= 0) {
-        if (!(led.point(check_x, check_y))) {
-            break;
-        } else if (led.pointBrightness(check_x, check_y) == another_light) {
+        if (led.pointBrightness(check_x, check_y) == another_light) {
             while (check_x >= 0 && check_y >= 0) {
-                if (!(led.point(check_x, check_y))) {
-                    break;
+                if (!led.point(check_x, check_y)) {
+                    break
                 } else if (led.pointBrightness(check_x, check_y) == light2) {
                     return 1
                 } else {
                     check_x += 0 - 1
                     check_y += 0 - 1
                 }
+                
             }
         } else {
-            check_x += 0 - 1
-            check_y += 0 - 1
+            break
         }
+        
     }
-    // ななめ左下方向
+    //  ななめ左下方向
     check_x = x - 1
     check_y = y + 1
     while (check_x >= 0 && check_y <= 4) {
-        if (!(led.point(check_x, check_y))) {
-            break;
-        } else if (led.pointBrightness(check_x, check_y) == another_light) {
+        if (led.pointBrightness(check_x, check_y) == another_light) {
             while (check_x >= 0 && check_y <= 4) {
-                if (!(led.point(check_x, check_y))) {
-                    break;
+                if (!led.point(check_x, check_y)) {
+                    break
                 } else if (led.pointBrightness(check_x, check_y) == light2) {
                     return 1
                 } else {
                     check_x += 0 - 1
                     check_y += 1
                 }
+                
             }
         } else {
-            check_x += 0 - 1
-            check_y += 1
+            break
         }
+        
     }
     return 0
 }
-function Turn (x2: number, y2: number, light22: number, another_light2: number) {
+
+function Turn(x2: number, y2: number, light22: number, another_light2: number): number {
     let i: number;
-// 上方向
+    
+    //  上方向
     check_y = y2 - 1
     while (check_y >= 0) {
         if (led.pointBrightness(x2, check_y) == another_light2) {
@@ -186,17 +187,23 @@ function Turn (x2: number, y2: number, light22: number, another_light2: number) 
                         led.plotBrightness(x2, y2 - i, light22)
                         i += 1
                     }
-                    break;
-break;
+                    break
+                } else if (!led.point(x2, check_y)) {
+                    break
+                } else {
+                    check_y += -1
+                    continue
                 }
-                check_y += -1
+                
             }
+            break
         } else {
-            break;
+            break
         }
+        
         check_y += -1
     }
-    // 下方向
+    //  下方向
     check_y = y2 + 1
     while (check_y <= 4) {
         if (led.pointBrightness(x2, check_y) == another_light2) {
@@ -207,21 +214,27 @@ break;
                         led.plotBrightness(x2, y2 + i, light22)
                         i += 1
                     }
-                    break;
-break;
+                    break
+                } else if (!led.point(x2, check_y)) {
+                    break
+                } else {
+                    check_y += 1
+                    continue
                 }
-                check_y += 1
+                
             }
+            break
         } else {
-            break;
+            break
         }
+        
         check_y += 1
     }
-    // 左方向
+    //  左方向
     check_x = x2 - 1
     while (check_x >= 0) {
-        if (!(led.point(check_x, y2)) || led.pointBrightness(check_x, y2) == light22) {
-            break;
+        if (!led.point(check_x, y2) || led.pointBrightness(check_x, y2) == light22) {
+            break
         } else if (led.pointBrightness(check_x, y2) == another_light2) {
             while (check_x >= 0) {
                 if (led.pointBrightness(check_x, y2) == light22) {
@@ -230,16 +243,23 @@ break;
                         led.plotBrightness(x2 - i, y2, light22)
                         i += 1
                     }
-                    break;
-break;
+                    break
+                } else if (!led.point(check_x, y2)) {
+                    break
+                } else {
+                    check_x += -1
+                    continue
                 }
-                check_x += -1
+                
             }
+            break
         } else {
-            check_x += -1
+            break
         }
+        
+        check_x += -1
     }
-    // 右方向
+    //  右方向
     check_x = x2 + 1
     while (check_x <= 4) {
         if (led.pointBrightness(check_x, y2) == another_light2) {
@@ -250,17 +270,23 @@ break;
                         led.plotBrightness(x2 + i, y2, light22)
                         i += 1
                     }
-                    break;
-break;
+                    break
+                } else if (!led.point(check_x, y2)) {
+                    break
+                } else {
+                    check_x += 1
+                    continue
                 }
-                check_x += 1
+                
             }
+            break
         } else {
-            break;
+            break
         }
+        
         check_x += 1
     }
-    // ななめ右下方向
+    //  ななめ右下方向
     check_x = x2 + 1
     check_y = y2 + 1
     while (check_x <= 4 && check_y <= 4) {
@@ -272,19 +298,25 @@ break;
                         led.plotBrightness(x2 + i, y2 + i, light22)
                         i += 1
                     }
-                    break;
-break;
+                    break
+                } else if (!led.point(check_x, check_y)) {
+                    break
+                } else {
+                    check_x += 1
+                    check_y += 1
+                    continue
                 }
-                check_x += 1
-                check_y += 1
+                
             }
+            break
         } else {
-            break;
+            break
         }
+        
         check_x += 1
         check_y += 1
     }
-    // ななめ右上方向
+    //  ななめ右上方向
     check_x = x2 + 1
     check_y = y2 - 1
     while (check_x <= 4 && check_y >= 0) {
@@ -296,46 +328,58 @@ break;
                         led.plotBrightness(x2 + i, y2 - i, light22)
                         i += 1
                     }
-                    break;
-break;
+                    break
+                } else if (!led.point(check_x, check_y)) {
+                    break
+                } else {
+                    check_x += 1
+                    check_y += -1
+                    continue
                 }
-                check_x += 1
-                check_y += -1
+                
             }
+            break
         } else {
-            break;
+            break
         }
+        
         check_x += 1
         check_y += -1
     }
-    // ななめ左下方向
+    //  ななめ左下方向
     check_x = x2 - 1
     check_y = y2 + 1
-    while (check_x >= 0 && check_y >= 0) {
+    while (check_x >= 0 && check_y <= 4) {
         if (led.pointBrightness(check_x, check_y) == another_light2) {
             while (check_x >= 0 && check_y <= 4) {
                 if (led.pointBrightness(check_x, check_y) == light22) {
                     i = 1
-                    while (i <= x2 - check_x - 1 && i <= y2 - check_y - 1) {
+                    while (i <= x2 - check_x - 1 && i <= check_y - y2 - 1) {
                         led.plotBrightness(x2 - i, y2 + i, light22)
                         i += 1
                     }
-                    break;
-break;
+                    break
+                } else if (!led.point(check_x, check_y)) {
+                    break
+                } else {
+                    check_x += -1
+                    check_y += 1
+                    continue
                 }
-                check_x += -1
-                check_y += 1
+                
             }
+            break
         } else {
-            break;
+            break
         }
+        
         check_x += -1
-        check_y += -1
+        check_y += 1
     }
-    // ななめ左上方向
+    //  ななめ左上方向
     check_x = x2 - 1
     check_y = y2 - 1
-    while (check_x >= 0 && check_y <= 4) {
+    while (check_x >= 0 && check_y >= 0) {
         if (led.pointBrightness(check_x, check_y) == another_light2) {
             while (check_x >= 0 && check_y >= 0) {
                 if (led.pointBrightness(check_x, check_y) == light22) {
@@ -344,21 +388,29 @@ break;
                         led.plotBrightness(x2 - i, y2 - i, light22)
                         i += 1
                     }
-                    break;
-break;
+                    break
+                } else if (!led.point(check_x, check_y)) {
+                    break
+                } else {
+                    check_x += -1
+                    check_y += -1
+                    continue
                 }
-                check_x += -1
-                check_y += -1
+                
             }
+            break
         } else {
-            break;
+            break
         }
+        
         check_x += -1
-        check_y += 1
+        check_y += -1
     }
     return 0
 }
-input.onButtonPressed(Button.AB, function () {
+
+input.onButtonPressed(Button.AB, function on_button_pressed_ab() {
+    
     if (j % 2 == 1) {
         light222 = 255
         another_light22 = 50
@@ -366,8 +418,9 @@ input.onButtonPressed(Button.AB, function () {
         light222 = 50
         another_light22 = 255
     }
+    
     if (0 <= カウンターx && カウンターx <= 4 && (0 <= カウンターy && カウンターy <= 4)) {
-        if (!(led.point(カウンターx, カウンターy))) {
+        if (!led.point(カウンターx, カウンターy)) {
             if (CheckTurn(カウンターx, カウンターy, light222, another_light22) == 1) {
                 led.plotBrightness(カウンターx, カウンターy, light222)
                 put += 1
@@ -376,11 +429,13 @@ input.onButtonPressed(Button.AB, function () {
                 j += 1
                 if (put == 21) {
                     player1 = 0
-                    for (let index = 0; index <= 4; index++) {
-                        for (let index2 = 0; index2 <= 4; index2++) {
+                    for (let index = 0; index < 5; index++) {
+                        for (let index2 = 0; index2 < 5; index2++) {
                             if (led.pointBrightness(index, index2) == 255) {
+                                basic.pause(500)
                                 player1 += 1
                             }
+                            
                         }
                     }
                     if (player1 >= 13) {
@@ -388,14 +443,20 @@ input.onButtonPressed(Button.AB, function () {
                     } else {
                         basic.showString("Player2 win!")
                     }
+                    
                 }
+                
             }
+            
         }
+        
     }
+    
     カウンターx = -1
     カウンターy = -1
 })
-input.onButtonPressed(Button.B, function () {
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
+    
     カウンターy += 1
 })
 let player1 = 0
