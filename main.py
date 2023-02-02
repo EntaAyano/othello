@@ -324,8 +324,8 @@ def on_button_pressed_ab():
                     for index in range(5):
                         for index2 in range(5):
                             if led.point_brightness(index, index2) == 255:
-                                basic.pause(500)
                                 player1 += 1
+                    basic.pause(500)
                     if player1 >= 13:
                         basic.show_string("Player1 win!")
                     else:
