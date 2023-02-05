@@ -339,6 +339,31 @@ def on_button_pressed_b():
     カウンターy += 1
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
+def on_pin_pressed_p1():
+    global put_counter, player1, player2
+    put_counter = 0
+    player1 = 0
+    player2 = 0
+    for index3 in range(5):
+        for index22 in range(5):
+            if led.point_brightness(index3, index22) == 255:
+                put_counter += 1
+                player1 += 1
+            elif led.point_brightness(index3, index22) == 50:
+                put_counter += 1
+                player2 += 1
+            else:
+                continue
+    if player1 > player2:
+        basic.show_string("Player1 win!")
+    elif player1 < player2:
+        basic.show_string("Player2 win!")
+    else:
+        basic.show_string("Draw!")
+input.on_pin_pressed(TouchPin.P1, on_pin_pressed_p1)
+
+player2 = 0
+put_counter = 0
 player1 = 0
 another_light22 = 0
 light222 = 0
